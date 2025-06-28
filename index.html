@@ -13,9 +13,9 @@
       padding: 0;
       background-color: #ffe6f0;
       font-family: Arial, sans-serif;
-      height: 100vh;
       overflow: hidden;
-      position: relative;
+      width: 100%;
+      height: 100%;
     }
 
     #container {
@@ -25,25 +25,22 @@
       box-shadow: 0 0 15px #ff66cc;
       text-align: center;
       max-width: 90%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       z-index: 2;
+      position: relative;
     }
 
     #question {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       color: #ff3399;
       text-shadow: 2px 2px 5px #ffcce5;
       margin-bottom: 2rem;
-      line-height: 1.6;
+      white-space: pre-line;
     }
 
     .btn {
       padding: 1rem 2rem;
       margin: 0.5rem;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       background-color: #ff66b2;
       color: white;
       border: none;
@@ -54,19 +51,6 @@
 
     .btn:hover {
       background-color: #ff3385;
-    }
-
-    #musicButton {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      font-size: 1.5rem;
-      z-index: 10;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 0.3rem 0.5rem;
-      border-radius: 10px;
-      box-shadow: 0 0 5px #ff66cc;
     }
 
     .emoji {
@@ -89,19 +73,22 @@
         opacity: 0;
       }
     }
+
+    #music-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
-  <!-- Botón de música -->
-  <div id="musicButton" onclick="playMusic()">🎵</div>
+  <button id="music-btn">🎵</button>
 
-  <!-- Audio -->
-  <audio id="bgMusic" loop>
-    <source src="brinquen-remix.mp3" type="audio/mpeg" />
-    Tu navegador no soporta audio HTML5.
-  </audio>
-
-  <!-- Contenido principal -->
   <div id="container">
     <div id="question">
       ¿Me enseñarías tus tetas<br>
@@ -112,25 +99,7 @@
   </div>
 
   <script>
-    // Función para reproducir música
-    function playMusic() {
-      const music = document.getElementById('bgMusic');
-      music.play().then(() => {
-        localStorage.setItem('musicPlaying', 'true');
-      }).catch((e) => {
-        console.log("No se pudo reproducir el audio: ", e);
-      });
-    }
-
-    // Mantener música sonando entre pantallas
-    window.onload = function () {
-      const music = document.getElementById('bgMusic');
-      if (localStorage.getItem('musicPlaying') === 'true') {
-        music.play().catch(() => {});
-      }
-    };
-
-    // Banderitas arcoíris subiendo
+    // Bandera LGBT subiendo en bucle
     for (let i = 0; i < 25; i++) {
       const emoji = document.createElement('div');
       emoji.className = 'emoji';
@@ -140,6 +109,18 @@
       emoji.style.bottom = `-${Math.random() * 100}px`;
       document.body.appendChild(emoji);
     }
+
+    // Reproducir música una sola vez para todas las páginas
+    const musicBtn = document.getElementById('music-btn');
+    musicBtn.addEventListener('click', () => {
+      if (!sessionStorage.getItem('musicStarted')) {
+        const audio = new Audio('brinquen-remix.mp3');
+        audio.loop = true;
+        audio.play();
+        window.audioGlobal = audio;
+        sessionStorage.setItem('musicStarted', 'true');
+      }
+    });
   </script>
 </body>
 </html>
