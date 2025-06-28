@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>¿Me enseñarías tus tetas?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden; /* ← Esto evita que se pueda hacer scroll */
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #container {
+      background: white;
+      padding: 1.8rem 1.4rem;
+      border-radius: 25px;
+      box-shadow: 0 0 20px #ff66cc;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+      width: 80%;
+      max-width: 340px;
+    }
+
+    #question {
+      font-size: 1.4rem;
+      color: #ff3399;
+      text-shadow: 1px 1px 3px #ffcce5;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem;
+      margin: 0.5rem;
+      font-size: 1.2rem;
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ff3385;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 1.8rem;
+      animation: subir 12s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes subir {
+      0% {
+        bottom: -60px;
+        left: calc(100% * var(--x));
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        left: calc(100% * var(--x));
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="question">
+      ¿Me enseñarías tus tetas<br>
+      o mejor la combi’<br>
+      completa? 🫦
+    </div>
+    <button class="btn" onclick="location.href='si1.html'">Sí</button>
+    <button class="btn" onclick="location.href='no1.html'">No</button>
+  </div>
+
+  <script>
+    // Banderitas subiendo por detrás del texto
+    for (let i = 0; i < 25; i++) {
+      const emoji = document.createElement('div');
+      emoji.className = 'emoji';
+      emoji.style.setProperty('--x', Math.random());
+      emoji.textContent = '🏳️‍🌈';
+      emoji.style.left = `${Math.random() * 100}%`;
+      emoji.style.bottom = `-${Math.random() * 100}px`;
+      document.body.appendChild(emoji);
+    }
+  </script>
+</body>
+</html>
