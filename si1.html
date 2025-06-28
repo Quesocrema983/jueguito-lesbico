@@ -2,51 +2,44 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Muy bien mi amor</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Respuesta Correcta</title>
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html, body {
-      height: 100%;
-      overflow: hidden;
+      margin: 0;
+      padding: 0;
       background-color: #ffe6f0;
       font-family: Arial, sans-serif;
-    }
-
-    body {
+      overflow: hidden;
+      height: 100%;
       display: flex;
-      align-items: center;
       justify-content: center;
-      position: relative;
+      align-items: center;
     }
 
     #container {
       background: white;
-      padding: 1.8rem 1.4rem;
-      border-radius: 25px;
-      box-shadow: 0 0 20px #ff66cc;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 15px #ff66cc;
       text-align: center;
-      z-index: 2;
-      position: relative;
-      width: 80%;
-      max-width: 340px;
+      max-width: 90%;
     }
 
-    #message {
-      font-size: 1.4rem;
+    #response {
+      font-size: 2rem;
       color: #ff3399;
-      text-shadow: 1px 1px 3px #ffcce5;
-      line-height: 1.6;
+      text-shadow: 2px 2px 5px #ffcce5;
+      line-height: 2.8rem;
+      white-space: pre-line;
     }
 
     .emoji {
       position: absolute;
-      font-size: 1.8rem;
+      font-size: 2rem;
       animation: subir 12s linear infinite;
       pointer-events: none;
       z-index: 1;
@@ -54,7 +47,7 @@
 
     @keyframes subir {
       0% {
-        bottom: -60px;
+        bottom: -50px;
         left: calc(100% * var(--x));
         opacity: 1;
       }
@@ -64,21 +57,35 @@
         opacity: 0;
       }
     }
+
+    #musicBtn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 3;
+    }
   </style>
 </head>
 <body>
+  <button id="musicBtn" onclick="toggleMusic()">🎵</button>
+
   <div id="container">
-    <div id="message">
-      Muy bien mi amor<br>
-      yo sabía que nuestra<br>
-      amistad era genuina 💕<br><br>
-      FECHA DE ENTREGA<br>
-      LÍMITE: MAÑANA POR LA MAÑANA
+    <div id="response">
+      Muy bien mi amor,  
+      yo sabía que nuestra  
+      amistad era genuina.  
+      
+      FECHA DE ENTREGA  
+      LÍMITE: MAÑANA POR LA MAÑANA.
     </div>
   </div>
 
+  <!-- Banderitas -->
   <script>
-    // Banderitas 🏳️‍🌈 en el fondo
     for (let i = 0; i < 25; i++) {
       const emoji = document.createElement('div');
       emoji.className = 'emoji';
@@ -87,6 +94,26 @@
       emoji.style.left = `${Math.random() * 100}%`;
       emoji.style.bottom = `-${Math.random() * 100}px`;
       document.body.appendChild(emoji);
+    }
+  </script>
+
+  <!-- Música -->
+  <script>
+    let music;
+    if (!window.brinquenMusic) {
+      music = new Audio('brinquen-remix.mp3');
+      music.loop = true;
+      window.brinquenMusic = music;
+    } else {
+      music = window.brinquenMusic;
+    }
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
     }
   </script>
 </body>
