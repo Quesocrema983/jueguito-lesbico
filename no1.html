@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>¡Escoge bien!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #container {
+      background: white;
+      padding: 3rem;
+      border-radius: 25px;
+      box-shadow: 0 0 20px #ff66cc;
+      text-align: center;
+      z-index: 2;
+      max-width: 90%;
+    }
+
+    #message {
+      font-size: 3.2rem;
+      color: #ff3399;
+      text-shadow: 2px 2px 5px #ffcce5;
+      white-space: pre-line;
+      line-height: 1.4;
+    }
+
+    .btn {
+      margin: 1.2rem;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: white;
+    }
+
+    .btn-si {
+      background-color: #ff66b2;
+      font-size: 2.5rem;
+      padding: 1.3rem 3.2rem;
+    }
+
+    .btn-si:hover {
+      background-color: #ff3385;
+    }
+
+    .btn-no {
+      background-color: #999999;
+      font-size: 1.1rem;
+      padding: 0.6rem 1.2rem;
+    }
+
+    .btn-no:hover {
+      background-color: #666666;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: subir 12s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes subir {
+      0% {
+        bottom: -50px;
+        left: calc(100% * var(--x));
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        left: calc(100% * var(--x));
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="message">
+      Como que no, preciosa.  
+      Yo sé que tocaste mal.  
+      Escoge bien esta vez.
+    </div>
+    <button class="btn btn-si" onclick="location.href='si2.html'">Sí</button>
+    <button class="btn btn-no" onclick="location.href='no2.html'">No</button>
+  </div>
+
+  <script>
+    for (let i = 0; i < 25; i++) {
+      const emoji = document.createElement('div');
+      emoji.className = 'emoji';
+      emoji.style.setProperty('--x', Math.random());
+      emoji.textContent = '🏳️‍🌈';
+      emoji.style.left = `${Math.random() * 100}%`;
+      emoji.style.bottom = `-${Math.random() * 100}px`;
+      document.body.appendChild(emoji);
+    }
+  </script>
+</body>
+</html>

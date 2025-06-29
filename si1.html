@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>¡Muy bien!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 15px #ff66cc;
+      text-align: center;
+      z-index: 2;
+      max-width: 90%;
+    }
+
+    #message {
+      font-size: 2.5rem;
+      color: #ff3399;
+      text-shadow: 2px 2px 5px #ffcce5;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: subir 12s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes subir {
+      0% {
+        bottom: -50px;
+        left: calc(100% * var(--x));
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        left: calc(100% * var(--x));
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="message">
+      Muy bien mi amor, yo sabía<br>
+      que nuestra amistad era genuina.<br>
+      FECHA DE ENTREGA LÍMITE:<br>
+      MAÑANA POR LA MAÑANA.
+    </div>
+  </div>
+
+  <script>
+    // Emojis 🏳️‍🌈 subiendo por detrás del texto
+    for (let i = 0; i < 25; i++) {
+      const emoji = document.createElement('div');
+      emoji.className = 'emoji';
+      emoji.style.setProperty('--x', Math.random());
+      emoji.textContent = '🏳️‍🌈';
+      emoji.style.left = `${Math.random() * 100}%`;
+      emoji.style.bottom = `-${Math.random() * 100}px`;
+      document.body.appendChild(emoji);
+    }
+  </script>
+</body>
+</html>
