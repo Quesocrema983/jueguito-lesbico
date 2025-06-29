@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>No 2</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #container {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ff66cc;
+      text-align: center;
+      max-width: 90%;
+    }
+
+    #text {
+      font-size: 2.7rem;
+      color: #ff3399;
+      text-shadow: 2px 2px 6px #ffcce5;
+      line-height: 3.8rem;
+      white-space: pre-line;
+      font-weight: bold;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    .btn-si {
+      background-color: #ff66b2;
+      color: white;
+      font-size: 1.8rem;
+      padding: 1.5rem 3.5rem;
+      transform: scale(1.2);
+    }
+
+    .btn-no {
+      background-color: #cccccc;
+      color: #666666;
+      font-size: 0.9rem;
+      padding: 0.6rem 1.2rem;
+      transform: scale(0.8);
+    }
+
+    .btn-si:hover {
+      background-color: #ff3399;
+    }
+
+    .btn-no:hover {
+      background-color: #aaaaaa;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="text">
+      APÚRATE PRESIONA SÍ
+
+      ANTES DE QUE SEA TARDE
+    </div>
+    <button class="btn btn-si" onclick="location.href='si3.html'">Sí</button>
+    <button class="btn btn-no" onclick="location.href='no3.html'">No</button>
+  </div>
+</body>
+</html>
