@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Advertencia</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #container {
+      background: white;
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #ff66cc;
+      text-align: center;
+      max-width: 90%;
+    }
+
+    .texto {
+      font-size: 2.6rem;
+      color: #ff3399;
+      text-shadow: 2px 2px 5px #ffcce5;
+      margin-bottom: 3rem;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-si {
+      background-color: #ff66b2;
+      font-size: 2.4rem;
+      padding: 2rem 4rem;
+      margin: 1rem;
+    }
+
+    .btn-si:hover {
+      background-color: #ff3399;
+    }
+
+    .btn-no {
+      background-color: #ff99cc;
+      font-size: 0.8rem;
+      padding: 0.4rem 1rem;
+      margin: 0.5rem;
+    }
+
+    .btn-no:hover {
+      background-color: #ff66a3;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="texto">
+      ESTAS COMETIENDO UN GRAVE<br>
+      ERROR TOCA SI
+    </div>
+    <button class="btn btn-si" onclick="location.href='si3.html'">Sí</button>
+    <button class="btn btn-no" onclick="location.href='no3.html'">No</button>
+  </div>
+</body>
+</html>
