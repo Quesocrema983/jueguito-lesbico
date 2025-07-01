@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>No3</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ff66cc;
+      text-align: center;
+      z-index: 1;
+      max-width: 90%;
+    }
+
+    #text {
+      font-size: 2.8rem;
+      color: #ff3399;
+      text-shadow: 2px 2px 5px #ffcce5;
+      white-space: pre-line;
+    }
+
+    #btn-si {
+      margin-top: 2rem;
+      padding: 1.5rem 3.5rem;
+      font-size: 1.8rem;
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #btn-si:hover {
+      background-color: #ff3385;
+    }
+
+    #btn-no {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background-color: #999;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: subir 12s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes subir {
+      0% {
+        bottom: -50px;
+        left: calc(100% * var(--x));
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        left: calc(100% * var(--x));
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="text">
+      APÚRATE PRESIONA SI ANTES
+      DE QUE SEA TARDE
+    </div>
+    <button id="btn-si" onclick="location.href='si4.html'">Sí</button>
+  </div>
+
+  <button id="btn-no" onclick="location.href='no4.html'">No</button>
+
+  <script>
+    // Emojis LGBT subiendo
+    for (let i = 0; i < 25; i++) {
+      const emoji = document.createElement("div");
+      emoji.className = "emoji";
+      emoji.style.setProperty("--x", Math.random());
+      emoji.textContent = "🏳️‍🌈";
+      emoji.style.left = `${Math.random() * 100}%`;
+      emoji.style.bottom = `-${Math.random() * 100}px`;
+      document.body.appendChild(emoji);
+    }
+  </script>
+</body>
+</html>

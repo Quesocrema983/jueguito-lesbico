@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>No4 - HAZME CASO</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    #container {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #ff66cc;
+      text-align: center;
+      max-width: 90%;
+      z-index: 2;
+      position: relative;
+      transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+    }
+
+    #text {
+      font-size: 3rem;
+      color: #ff3399;
+      text-shadow: 3px 3px 6px #ffcce5;
+      margin-bottom: 2.5rem;
+      white-space: pre-line;
+    }
+
+    .btn {
+      padding: 1.2rem 2.5rem;
+      margin: 1rem;
+      font-size: 1.5rem;
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: default;
+    }
+
+    #countdown {
+      font-size: 7rem;
+      font-weight: bold;
+      color: #ff3399;
+      text-shadow: 4px 4px 8px #ffcce5;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+
+    .floating-si {
+      position: absolute;
+      font-size: 1.5rem;
+      background-color: #ff66b2;
+      color: white;
+      border-radius: 50%;
+      padding: 0.8rem;
+      animation: spin 4s linear infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg) translateX(100px) rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg) translateX(100px) rotate(-360deg);
+      }
+    }
+
+    @keyframes fadeBack {
+      to {
+        transform: translateZ(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="text">HAZME CASO POR FAVOR</div>
+    <button class="btn" disabled>Sí</button>
+    <button class="btn" disabled>No</button>
+  </div>
+  <div id="countdown"></div>
+
+  <script>
+    const container = document.getElementById('container');
+    const countdown = document.getElementById('countdown');
+
+    // Paso 1: esperar 3 segundos y hacer que se aleje
+    setTimeout(() => {
+      container.style.animation = "fadeBack 3s forwards";
+
+      // Paso 2: esperar a que termine de alejarse
+      setTimeout(() => {
+        container.style.display = "none";
+        countdown.style.display = "block";
+
+        // Agregar botones giratorios justo aquí
+        const botonesSi = [];
+        for (let i = 0; i < 6; i++) {
+          const si = document.createElement("div");
+          si.className = "floating-si";
+          si.textContent = "Sí";
+          si.style.top = "50%";
+          si.style.left = "50%";
+          si.style.animationDuration = `${3 + Math.random() * 3}s`;
+          document.body.appendChild(si);
+          botonesSi.push(si);
+        }
+
+        // Paso 3: cuenta regresiva del 5 al 1
+        let num = 5;
+        countdown.textContent = num;
+        const interval = setInterval(() => {
+          num--;
+          if (num > 0) {
+            countdown.textContent = num;
+          } else {
+            clearInterval(interval);
+            countdown.textContent = "";
+
+            // Quitar botones “sí” flotantes
+            botonesSi.forEach(btn => btn.remove());
+
+            // Esperar 3 segundos antes de pasar a caos.html
+            setTimeout(() => {
+              window.location.href = "caos.html";
+            }, 3000);
+          }
+        }, 3000);
+      }, 3000);
+    }, 3000);
+  </script>
+</body>
+</html>
